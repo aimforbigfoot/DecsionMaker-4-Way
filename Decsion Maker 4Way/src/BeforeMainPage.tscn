@@ -1,0 +1,106 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/text/Kenney Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/lineEditStyle/labelPiece.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/text/32sizeFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/buttonsStyle/hover.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/buttonsStyle/pressed.tres" type="StyleBox" id=5]
+[ext_resource path="res://assets/buttonsStyle/diabled.tres" type="StyleBox" id=6]
+[ext_resource path="res://src/BeforeMainPage.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[node name="BeforeMainPage" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 34
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_top = 259.0
+margin_right = 1280.0
+margin_bottom = 307.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "What two things do you want to compare"
+align = 1
+valign = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 341.0
+margin_right = 1280.0
+margin_bottom = 377.0
+custom_constants/separation = 24
+alignment = 1
+
+[node name="firstThing" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+margin_left = 128.0
+margin_right = 628.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 500, 0 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/selection_color = Color( 0.396078, 0.396078, 0.396078, 1 )
+custom_colors/cursor_color = Color( 0.207843, 0.207843, 0.207843, 1 )
+custom_colors/font_color_selected = Color( 0.0352941, 0.117647, 0.87451, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+max_length = 15
+placeholder_text = "First Thing"
+caret_blink = true
+caret_blink_speed = 0.25
+
+[node name="secondThing" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+margin_left = 652.0
+margin_right = 1152.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 500, 0 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = ExtResource( 2 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/selection_color = Color( 0.396078, 0.396078, 0.396078, 1 )
+custom_colors/cursor_color = Color( 0.207843, 0.207843, 0.207843, 1 )
+custom_colors/font_color_selected = Color( 0.0352941, 0.117647, 0.87451, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+max_length = 15
+placeholder_text = "Second Thing"
+caret_blink = true
+caret_blink_speed = 0.25
+
+[node name="submitButton" type="Button" parent="VBoxContainer"]
+margin_left = 565.0
+margin_top = 411.0
+margin_right = 715.0
+margin_bottom = 461.0
+rect_min_size = Vector2( 150, 50 )
+size_flags_horizontal = 4
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = ExtResource( 6 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.733333, 0.733333, 0.733333, 1 )
+text = " Submit "
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/firstThing" to="." method="_on_firstThing_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/secondThing" to="." method="_on_secondThing_text_changed"]
+[connection signal="pressed" from="VBoxContainer/submitButton" to="." method="_on_submitButton_pressed"]
